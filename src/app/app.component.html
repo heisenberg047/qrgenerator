@@ -1,0 +1,18 @@
+<mat-toolbar class="tophead">
+  <span>QR creator</span>
+</mat-toolbar>
+<br>
+<br>
+<form #qrform="ngForm" (ngSubmit)="setval(id.value)">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter the input </mat-label>
+      <input #id matInput placeholder="any website">
+    </mat-form-field>
+    <button mat-flat-button color="primary">Create QR</button>
+</form>
+<br>
+<br>
+<qrcode #parent [qrdata]="title" [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true" elementType="img"  [margin]="1"></qrcode>
+<br>
+<br>
+<button mat-flat-button color="primary" (click)="saveAsImage(parent)">Download QR Code Image</button>
